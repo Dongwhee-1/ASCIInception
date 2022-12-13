@@ -3,7 +3,7 @@ function retry(){
   bosses=[];
   items=[];
   bossSpawned=0;
-  respawnCount=150;
+  respawnCount=200;
   score_record_started=0;
   score_recorded=0;
   hero.x=width*0.5;
@@ -11,6 +11,9 @@ function retry(){
   gameOver=false;
 }
 
+function restart(){
+  window.location.reload(true);
+}
 
 function mouseClicked(){
   if (stage == 1){
@@ -41,69 +44,22 @@ function mouseClicked(){
   }
   else if (stage == 13){
     n6 += 1;
-    //if (n6 >=8) {stage = 14;}
+    // if (n6 >=8) {stage = 14;}
   }
   else if (stage == 14){
     n7 += 1;
     if (n7>=5){
-      stage=0;
-      x=0;
-      n=-1;
-      n2=0;
-      n3=0;
-      n4=0;
-      n5=0;
-      n6=0;
-      n7=0;
-      stage=0;
-      ran1=0;
-      ran2=0;
+      restart();
     }
   }
 }
 
 function keyPressed(){
-  if(gameOver && key=='r') retry();
-  if(gameOver && key=='h'){
-    stage=0;
-    monsters=[];
-    bosses=[];
-    items=[];
-    respawnCount=150;
-    respawnRate=300;
-    respawnNumber=5;
-    bossSpawned=0;
-    score_record_started=0;
-    score_recorded=0;
-    wave = 0; //제목 sin함수 관련
-    out = 255;
-    n0 = -1; //다이얼로그 카운터 0
-    n1 = -1; //다이얼로그 카운터 1
-    n2 = 0; //다이얼로그 카운터 2
-    n3 = 0; //다이얼로그 카운터 3
-    n4 = 0; //다이얼로그 카운터 4
-    n5 = 0; //다이얼로그 카운터 5
-    n6 = 0; //다이얼로그 카운터 6
-    n7 = 0; //다이얼로그 카운터7
-    ran1 = 0; //랜덤 변수
-    ran2 = 0; //랜덤 변수2
-    whiteOut = 1;
-    webcamCount = 0;
-    intime=0; //타이머용
-    outtime=0; //타이머용2
-    frame_recorded=0;
-    frame_record_started=0;
-    dead_n=0;
-    dead_short_n=0
-    dead_long_n=0;
-    respawn_x=width*0.5;
-    respawn_y=height*0.5;
-    monster_color=color(0, 255, 65);
-    background_color=0;
-    gameOver=false;
-    hero = new Hero(0.5*width,0.8*height);
+  if(gameOver){
+    if(key=='r' || key=='ㄱ') retry();
+    else if(key=='h' || key=='ㅗ') restart();
   }
-  if(key=='p') fullscreen(!fullscreen());
+  if(key=='p' || key=='ㅔ') fullscreen(true);
   if (stage == 0 && key=='Enter'){
     press_enter.play();
     stage = 1;
@@ -150,18 +106,7 @@ function keyPressed(){
     press_enter.play();
     n7 += 1;
     if (n7>=5){
-      stage=0;
-      x=0;
-      n=-1;
-      n2=0;
-      n3=0;
-      n4=0;
-      n5=0;
-      n6=0;
-      n7=0;
-      stage=0;
-      ran1=0;
-      ran2=0;
+      restart();
     }
   }
 }
