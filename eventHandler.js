@@ -3,7 +3,7 @@ function retry(){
   bosses=[];
   items=[];
   bossSpawned=0;
-  respawnCount=200;
+  respawnCount=150;
   score_record_started=0;
   score_recorded=0;
   hero.x=width*0.5;

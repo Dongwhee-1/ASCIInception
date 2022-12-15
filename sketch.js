@@ -103,8 +103,8 @@ function preload() {
 function setup() {
   width=displayWidth;
   height=displayHeight;
-  // width=1920;
-  // height=1080;
+  // width=displayHeight;
+  // height=displayWidth;
   ratio=width/2560;
   createCanvas(width,height);
   noStroke();
@@ -133,12 +133,13 @@ function setup() {
   cut_sound2.playMode('untilDone');
   cut_sound3.playMode('untilDone');
   cut_sound4.playMode('untilDone');
-  ost_monster.setVolume(1.5);
+  ost_monster.setVolume(2);
   boss2_sound1.setVolume(2);
   boss2_sound2.setVolume(1.5);
 }
 
 function draw() {
+  cam.loadPixels();
   if(gameOver){
     boss1_sound1.stop();
     boss1_sound2.stop();
@@ -154,6 +155,9 @@ function draw() {
     ost_boss3.stop();
     hit_sound.stop();
     cut_sound1.stop();
+    cut_sound2.stop();
+    cut_sound3.stop();
+    cut_sound4.stop();
 
     fill('red');
     textSize(300*ratio);
